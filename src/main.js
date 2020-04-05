@@ -1,3 +1,5 @@
+'use strict'
+
 const returnMenu = () => (`<section class="main__control control container">
     <h1 class="control__title">TASKMANAGER</h1>
     <section class="control__btn-wrap">
@@ -343,29 +345,29 @@ const returnLoadMoreButton = () => (`<button class="load-more" type="button">loa
 const main = document.querySelector(`.main`);
 const mainControl = document.querySelector(`.main__control`);
 
-const renderComponent = (component, place, position) => {
-  place.insertAdjacentHTML(position, component);
-}
 
-renderComponent(returnMenu(), mainControl, `beforeend`);
-renderComponent(returnFilters(), main, `beforeend`);
-renderComponent(returnBoard(), main, `beforeend`);
+const renderComponent = (component, place) => {
+  place.insertAdjacentHTML(`beforeend`, component);
+};
+
+renderComponent(returnMenu(), mainControl);
+renderComponent(returnFilters(), main);
+renderComponent(returnBoard(), main);
 
 const board = document.querySelector(`.board`);
-renderComponent(returnSorting(), board, `beforeend`);
-renderComponent(returnTaskBoard(), board, `beforeend`);
+renderComponent(returnSorting(), board);
+renderComponent(returnTaskBoard(), board);
 
 const generateTasks = () => {
   const NUMBER_OF_TASKS = 3;
   const tasks = [];
   const taskBoard = document.querySelector(`.board__tasks`);
-  renderComponent(returnEditTask(), taskBoard, `beforeend`);
+  renderComponent(returnEditTask(), taskBoard);
   for (let i = 0; i < NUMBER_OF_TASKS; i++) {
     tasks.push(returnTask());
   }
-  console.log(tasks);
-  renderComponent(tasks.join(``), taskBoard, `beforeend`);
-}
+  renderComponent(tasks.join(``), taskBoard);
+};
 
 generateTasks();
-renderComponent(returnLoadMoreButton(), board, `beforeend`);
+renderComponent(returnLoadMoreButton(), board);
