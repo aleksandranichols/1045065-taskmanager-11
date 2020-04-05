@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const returnMenu = () => (`<section class="main__control control container">
     <h1 class="control__title">TASKMANAGER</h1>
